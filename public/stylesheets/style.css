@@ -4,11 +4,25 @@ a {
 
 .window {
   border: 1px solid black;
-  width: 400px;
-  height: 50px;
+  width: 200px;
+  height: 30px;
   overflow: auto;
+  display: inline-block;
+  text-align: right;
+  padding-top: 2.5px;
+  padding-right: 2.5px;
+}
+
+.btn {
+  width: 34px;
+  margin-bottom: 3px;
 }
 
 .clear {
   width: 200px;
 }
+
+
+/*.col-md-8 {*/
+  /*border: 1px;*/
+/*}*/
