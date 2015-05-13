@@ -10,7 +10,7 @@ var app = express();
 var mongoose = require('mongoose');
 var calculator = require('./routes/calculationRoute');
 
-var mongoURI = "mongodb://localhost:27017/todoAPI";
+var mongoURI = "mongodb://localhost:27017/calculator";
 var MongoDB = mongoose.connect(mongoURI).connection;
 MongoDB.on('error', function (err) {
   if (err) {

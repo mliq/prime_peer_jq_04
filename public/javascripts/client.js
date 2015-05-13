@@ -9,6 +9,23 @@ var operation;
 function display(input) {
     $('#window').empty();
     $('#window').append(input);
+    $.ajax({
+        url: '/calculation',
+        type: 'POST',
+        data: {
+            calculation: input
+        },
+        dataType: 'json',
+        complete: function () {
+            console.log('ajax complete');
+        },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (xhr, status) {
+            console.log("Error: " + status);
+        }
+    });
 }
 
 
