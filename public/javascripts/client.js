@@ -49,18 +49,22 @@ $(document).ready(function () {
             if (id == "-") {
                 result -= parseInt(displayed);
                 displayed = "";
+                display(result);
                 console.log("After actually subtracting, result = " + result);
             } else if (id == "+") {
-                result = parseInt(displayed);
+                result += parseInt(displayed);
                 displayed = "";
+                display(result);
                 console.log("After actually adding, result = " + result);
             } else if (id == "/") {
                 result = parseInt(displayed);
-                displayed = "";
+                displayed /= "";
+                display(result);
                 console.log("After actually dividing, result = " + result);
             } else if (id == "*") {
-                result = parseInt(displayed);
+                result *= parseInt(displayed);
                 displayed = "";
+                display(result);
                 console.log("After actually multiplying, result = " + result);
             } else if (id == "=") {
                 if(operation == "subtract") {
