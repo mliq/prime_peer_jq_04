@@ -40,6 +40,10 @@ $(document).ready(function () {
                 console.log("After clicking multiply, result = " + result);
             } else if (id == "=") {
                 display(displayed);
+            } else if(id == "clear") {
+                $('#window').empty();
+                result = null;
+                displayed = "";
             } else {
                 displayed += id;
                 display(displayed);
@@ -80,16 +84,15 @@ $(document).ready(function () {
                     result /= parseInt(displayed);
                     display(result);
                 }
+            } else if(id == "clear") {
+                $('#window').empty();
+                result = null;
+                displayed = "";
             } else {
                 displayed += id;
                 display(displayed);
                 console.log("The 2nd else ran");
             }
         }
-    });
-    $('#clear').on('click', function() {
-        $('#window').empty();
-        result = null;
-        displayed = "";
     });
 });
