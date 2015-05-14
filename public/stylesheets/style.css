@@ -22,7 +22,11 @@ a {
   width: 200px;
 }
 
+.result {
+    /*border: inset black 1px;*/
+    /*border-collapse: collapse;*/
+}
 
-/*.col-md-8 {*/
-  /*border: 1px;*/
-/*}*/
+.results {
+    /*border: dashed black 1px;*/
+}

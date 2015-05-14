@@ -18,6 +18,7 @@ function display(input) {
         dataType: 'json',
         complete: function () {
             console.log('ajax complete');
+            historyRefresh();
         },
         success: function (response) {
             console.log(response);
@@ -28,13 +29,32 @@ function display(input) {
     });
 }
 
+function historyRefresh() {
+    $.ajax({
+        url: '/calculation',
+        type: 'GET',
+        dataType: 'json',
+        complete: function () {
+            console.log('ajax complete');
+        },
+        success: function (response) {
+            console.log(response);
+            for (var i = 0; i < response.length; i++) {
+                $('.results').prepend("<div class='well-sm well result col-xs-1'>" + response[i].calculation + "</div>");
+            }
+        },
+        error: function (xhr, status) {
+            console.log("Error: " + status);
+        }
+    });
+}
 
 $(document).ready(function () {
     $('body').on('click', '.btn', function () {
         console.log($(this).attr('id'));
         var id = $(this).attr('id');
         console.log("Before anything result = " + result);
-        if(result == null) {
+        if (result == null) {
             if (id == "-") {
                 operation = "subtract";
                 result = parseInt(displayed);
@@ -57,7 +77,7 @@ $(document).ready(function () {
                 console.log("After clicking multiply, result = " + result);
             } else if (id == "=") {
                 display(displayed);
-            } else if(id == "clear") {
+            } else if (id == "clear") {
                 $('#window').empty();
                 result = null;
                 displayed = "";
@@ -88,20 +108,20 @@ $(document).ready(function () {
                 display(result);
                 console.log("After actually multiplying, result = " + result);
             } else if (id == "=") {
-                if(operation == "subtract") {
+                if (operation == "subtract") {
                     result -= parseInt(displayed);
                     display(result);
-                } else if(operation == "add") {
+                } else if (operation == "add") {
                     result += parseInt(displayed);
                     display(result);
-                } else if(operation == "multiply") {
+                } else if (operation == "multiply") {
                     result *= parseInt(displayed);
                     display(result);
-                } else if(operation == "divide") {
+                } else if (operation == "divide") {
                     result /= parseInt(displayed);
                     display(result);
                 }
-            } else if(id == "clear") {
+            } else if (id == "clear") {
                 $('#window').empty();
                 result = null;
                 displayed = "";
